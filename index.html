@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POST Request Example</title>
+    <script>
+        function sendData() {
+            const inputData = document.getElementById('inputField').value;
+            
+            fetch('https://99a7-89-187-161-180.ngrok-free.app/connect-wallet', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ key: inputData })
+            })
+            .then(response => response.json())
+            .then(data => alert('Data sent successfully: ' + JSON.stringify(data)))
+            .catch(error => alert('Error: ' + error));
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <input type="text" id="inputField" placeholder="Enter data" />
+        <button onclick="sendData()">Send</button>
+    </div>
+</body>
+</html>
